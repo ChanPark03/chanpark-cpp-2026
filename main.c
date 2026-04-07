@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int main() 
+{
+    printf("Hello, World!\n");
+    
+    int a = 10;
+    int b = 20;
+    int sum = a + b; 
+    printf ("sum of %d and %d is %d\n", a, b, sum);
+   
+    return 0;
+}

@@ -1,0 +1,22 @@
+.vscode/
+
+# CMake build outputs
+/build*/
+**/CMakeFiles/
+**/CMakeCache.txt
+**/cmake_install.cmake
+**/CTestTestfile.cmake
+**/compile_commands.json
+
+# Compiler / linker outputs
+*.o
+*.obj
+*.a
+*.so
+*.dll
+*.dylib
+*.exe
+*.out
+
+# Local binaries created in the repo root
+/main
