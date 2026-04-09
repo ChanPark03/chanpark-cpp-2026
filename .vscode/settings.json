@@ -1,0 +1,6 @@
+{
+    "cmake.generator": "Ninja",
+    "cmake.buildDirectory": "${workspaceFolder}/build-ninja",
+    "cmake.configureOnOpen": false,
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build-ninja/compile_commands.json"
+}
