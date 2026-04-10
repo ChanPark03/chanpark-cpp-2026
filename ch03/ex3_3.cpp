@@ -3,44 +3,42 @@ using namespace std;
 
 class Circle
 {
-private:
+public:
     int radius;
-
-public:  
     
     double getArea();
-    int read_radius();
-    void write_radius(int r);
+    
+    Circle();
+    Circle(int r);
+
 };
 
 double Circle :: getArea(){
     return 3.14 * radius * radius;
+    }
+
+Circle :: Circle(){
+    radius = 1;
+    cout << "반지름" << radius << "원생성" <<endl;
+
 }
 
-int Circle :: read_radius(){
-    return radius;
-}
-
-void Circle :: write_radius(int r){
+Circle :: Circle(int r){
     radius = r;
+    cout << "반지름" << radius << "원생성" <<endl;
+
 
 }
 
 
 int main() {
-
     Circle donut;
-   
-    donut.write_radius(10);
     double area = donut.getArea();
     cout << "donut 면적은" << area << endl;
 
-   
-    Circle pizza;
-   
-    pizza.write_radius(30);
+    Circle pizza(30);
     area = pizza.getArea();
     cout << "pizza 면적은" << area << endl;
-
+    
     return 0;
 }
