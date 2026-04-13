@@ -36,6 +36,7 @@ endfunction()
 add_chapter_examples(ch01)
 add_chapter_examples(ch02)
 add_chapter_examples(ch03)
+add_chapter_examples(ch04)
 
 add_standalone_example(root_main "${CMAKE_CURRENT_SOURCE_DIR}/main.c" "main")
 

@@ -46,11 +46,8 @@ double Storage :: getAvg(){
     return avg;
     }
 
-
-
 //생성자 구현
-Storage :: Storage(/* args */)
-{
+Storage :: Storage(/* args */){
 
     for (int i = 0; i < 10; i++)
     {
@@ -59,11 +56,6 @@ Storage :: Storage(/* args */)
 
     next = 0;
 }
-
-
-
-
-
 
 int main() {
 
