@@ -33,10 +33,37 @@ function(add_chapter_examples chapter_name)
     endforeach()
 endfunction()
 
-add_chapter_examples(ch01)
-add_chapter_examples(ch02)
-add_chapter_examples(ch03)
-add_chapter_examples(ch04)
+function(add_all_chapter_examples)
+    file(GLOB top_level_entries CONFIGURE_DEPENDS LIST_DIRECTORIES true
+        RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}"
+        "${CMAKE_CURRENT_SOURCE_DIR}/*"
+    )
+
+    foreach(entry IN LISTS top_level_entries)
+        set(entry_path "${CMAKE_CURRENT_SOURCE_DIR}/${entry}")
+        if(NOT IS_DIRECTORY "${entry_path}")
+            continue()
+        endif()
+
+        if(entry MATCHES "^\\.")
+            continue()
+        endif()
+
+        if(entry MATCHES "^build")
+            continue()
+        endif()
+
+        file(GLOB chapter_cpp_sources CONFIGURE_DEPENDS
+            "${entry_path}/*.cpp"
+        )
+
+        if(chapter_cpp_sources)
+            add_chapter_examples("${entry}")
+        endif()
+    endforeach()
+endfunction()
+
+add_all_chapter_examples()
 
 add_standalone_example(root_main "${CMAKE_CURRENT_SOURCE_DIR}/main.c" "main")
 
