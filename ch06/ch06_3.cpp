@@ -2,7 +2,7 @@
 using namespace std;
 
 
-bool equals(string x = "", string y = "", int n=0, string z= "")
+bool equals(string x = "", string y = "", int n=0, string z= "");
 
 int main() {
 
