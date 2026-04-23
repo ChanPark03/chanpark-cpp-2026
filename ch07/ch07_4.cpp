@@ -12,6 +12,9 @@ public:
     Power operator+(Power op2);
     bool operator == (Power op2);
     Power& operator +=(Power op2);
+    
+    friend Power operator+(int op1, Power op2);
+    friend Power operator+(Power op1, int op2);
 
 };
 
@@ -44,19 +47,25 @@ bool Power::operator==(Power op2){
     punch = punch + op2.punch;
     return *this;
  }
+
+ Power operator+(int op1, Power op2){
+    Power tmp;
+    tmp.kick = op1 + op2.kick;
+    tmp.punch = op2.punch;
+    return tmp;
+ }
 int main() {
     Power a(3,5), b(4,6), c;
-    c = a.operator+(b);
+    c = a + b;
     a.show();
     b.show();
     c.show();
 
-    if (a == b) cout << "두 파워가 같다." << endl;
-    else cout << "두 파워가 같지 않다." << endl;
-    
-    c= a+=b;
-    c.show();
+    b = 2 + a;
+    b.show();
+
 
     
-  
+    return 0;
+
 }   
