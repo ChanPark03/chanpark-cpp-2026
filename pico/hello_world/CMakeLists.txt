@@ -33,30 +33,27 @@ project(hello_world C CXX ASM)
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
-# Add executable. Default name is the project name, version 0.1
+function(add_pico_program target_name source_file)
+    add_executable(${target_name} ${source_file})
 
-add_executable(hello_world hello_world.cpp )
+    pico_set_program_name(${target_name} "${target_name}")
+    pico_set_program_version(${target_name} "0.1")
 
-pico_set_program_name(hello_world "hello_world")
-pico_set_program_version(hello_world "0.1")
+    # Modify the below lines to enable/disable output over UART/USB
+    pico_enable_stdio_uart(${target_name} 1)
+    pico_enable_stdio_usb(${target_name} 1)
 
-# Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(hello_world 1)
-pico_enable_stdio_usb(hello_world 1)
+    # Add the standard library to the build
+    target_link_libraries(${target_name}
+            pico_stdlib)
 
-# Add the standard library to the build
-target_link_libraries(hello_world
-        pico_stdlib)
+    # Add the standard include files to the build
+    target_include_directories(${target_name} PRIVATE
+            ${CMAKE_CURRENT_LIST_DIR}
+    )
 
-# Add the standard include files to the build
-target_include_directories(hello_world PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}
-)
+    pico_add_extra_outputs(${target_name})
+endfunction()
 
-# Add any user requested libraries
-target_link_libraries(hello_world 
-        
-        )
-
-pico_add_extra_outputs(hello_world)
-
+add_pico_program(hello_world hello_world.cpp)
+add_pico_program(fnd fnd.cpp)

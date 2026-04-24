@@ -58,7 +58,7 @@ bool MY_GPIO::getRead(){
 
 MY_GPIO::MY_GPIO(int pin_num) : MY_GPIO(pin_num, GPIO_OUT){}
 
-
+z
 MY_GPIO::MY_GPIO(int pin_num, bool dir)
 {
     this->pin_num = pin_num;
