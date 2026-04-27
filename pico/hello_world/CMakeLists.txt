@@ -45,8 +45,9 @@ function(add_pico_program target_name source_file)
 
     # Add the standard library to the build
     target_link_libraries(${target_name}
-            pico_stdlib)
-
+    pico_stdlib
+    hardware_i2c   
+)
     # Add the standard include files to the build
     target_include_directories(${target_name} PRIVATE
             ${CMAKE_CURRENT_LIST_DIR}
